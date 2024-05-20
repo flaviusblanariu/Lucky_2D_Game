@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import entity.Player;
+import object.SuperObject;
 import tile.ManagerTile;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -31,7 +32,9 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CheckCollision collisionCheck = new CheckCollision(this);
+    public AssetSet aSet = new AssetSet(this);
     public Player player = new Player(this,keyH);
+    public SuperObject obj[] = new SuperObject[10];
 
 
     public GamePanel(){
@@ -47,6 +50,9 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.setPriority(Thread.MAX_PRIORITY);
     }
 
+    public void setupGame(){
+        aSet.setObject();
+    }
     @Override
     public void run() {
         //Metoda "sleep"
@@ -110,8 +116,17 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
+        //DALA
         tileM.draw(g2);
 
+        //OBIECT
+        for(int i=0; i<obj.length; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2,this);
+            }
+        }
+
+        //JUCATOR
         player.draw(g2);
         g2.dispose();
     }
