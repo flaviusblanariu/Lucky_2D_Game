@@ -14,6 +14,7 @@ public class Player extends Entity{
 
     public final int screenX;
     public final int screenY;
+    int hasKey = 0;
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp=gp;
         this.keyH=keyH;
@@ -24,6 +25,8 @@ public class Player extends Entity{
         solidAria = new Rectangle();
         solidAria.x = 8;
         solidAria.y = 16;
+        solidAriaDefaultX = solidAria.x;
+        solidAriaDefaultY = solidAria.y;
         solidAria.width = 16;
         solidAria.height = 16;
 
@@ -76,6 +79,10 @@ public class Player extends Entity{
             collisionOn = false;
             gp.collisionCheck.checkTile(this);
 
+            //Verifica coliziune obiect
+            int objIndex = gp.collisionCheck.checkObject(this,true);
+            pickUpObject(objIndex);
+
             //Daca coliziunea e falsa, jucatorul se poate misca
             if(collisionOn == false){
                 switch(direction){
@@ -102,6 +109,35 @@ public class Player extends Entity{
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
+            }
+        }
+
+    }
+
+    public void pickUpObject(int i){
+        if(i != 999){
+            String objectName = gp.obj[i].name;
+
+            switch(objectName){
+                case "Key":
+                    gp.playSoundEfect(1);
+                    hasKey++;
+                    gp.obj[i] = null;
+                    System.out.println("Key:"+hasKey);
+                    break;
+                case "Door":
+                    gp.playSoundEfect(2);
+                    if(hasKey > 0){
+                        gp.obj[i] = null;
+                        hasKey--;
+                    }
+                    System.out.println("Key:"+hasKey);
+                    break;
+                case "Mushroom":
+                    gp.playSoundEfect(3);
+                    speed +=2;
+                    gp.obj[i] = null;
+                    break;
             }
         }
 

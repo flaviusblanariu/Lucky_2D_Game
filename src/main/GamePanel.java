@@ -13,7 +13,7 @@ import tile.ManagerTile;
 public class GamePanel extends JPanel implements Runnable{
     //SETARI DE AFISARE
     final int originalTileSize = 16; //dala 16x16
-    final int scale = 3;
+    final int scale = 4;
     public final int tileSize = originalTileSize*scale; // dala 48x48
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 16;
@@ -30,9 +30,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     ManagerTile tileM = new ManagerTile(this);
     KeyHandler keyH = new KeyHandler();
-    Thread gameThread;
     public CheckCollision collisionCheck = new CheckCollision(this);
     public AssetSet aSet = new AssetSet(this);
+    Thread gameThread;
+
+    //Entitate si obiect
+
+    Sound sound = new Sound();
     public Player player = new Player(this,keyH);
     public SuperObject obj[] = new SuperObject[10];
 
@@ -52,6 +56,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setupGame(){
         aSet.setObject();
+        playMusic(0);
     }
     @Override
     public void run() {
@@ -130,6 +135,19 @@ public class GamePanel extends JPanel implements Runnable{
         player.draw(g2);
         g2.dispose();
     }
+    public void playMusic(int i){
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+    public void stopMusic(){
+        sound.stop();
+    }
+    public void playSoundEfect(int i){
+        sound.setFile(i);
+        sound.play();
+    }
+
 
 }
 
