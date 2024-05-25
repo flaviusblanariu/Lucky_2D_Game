@@ -1,10 +1,12 @@
 package main;
 
+import javax.sound.sampled.FloatControl;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.sound.sampled.*;
 
 import entity.Player;
 import object.SuperObject;
@@ -32,10 +34,12 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
     public CheckCollision collisionCheck = new CheckCollision(this);
     public AssetSet aSet = new AssetSet(this);
+    public UserInterface ui = new UserInterface(this);
     Thread gameThread;
 
     //Entitate si obiect
 
+    Sound music = new Sound();
     Sound sound = new Sound();
     public Player player = new Player(this,keyH);
     public SuperObject obj[] = new SuperObject[10];
@@ -133,15 +137,18 @@ public class GamePanel extends JPanel implements Runnable{
 
         //JUCATOR
         player.draw(g2);
+
+        //Interfata cu utilizatorul
+        ui.draw(g2);
         g2.dispose();
     }
     public void playMusic(int i){
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
     public void stopMusic(){
-        sound.stop();
+        music.stop();
     }
     public void playSoundEfect(int i){
         sound.setFile(i);

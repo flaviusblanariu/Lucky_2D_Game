@@ -14,7 +14,7 @@ public class Player extends Entity{
 
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
+    public int hasKey = 0;
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp=gp;
         this.keyH=keyH;
@@ -23,12 +23,12 @@ public class Player extends Entity{
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
         solidAria = new Rectangle();
-        solidAria.x = 8;
-        solidAria.y = 16;
+        solidAria.x = 16;
+        solidAria.y = 8;
         solidAriaDefaultX = solidAria.x;
         solidAriaDefaultY = solidAria.y;
-        solidAria.width = 16;
-        solidAria.height = 16;
+        solidAria.width = 24;
+        solidAria.height = 40;
 
         setDefaultValues();
         getPlayerImage();
@@ -123,20 +123,30 @@ public class Player extends Entity{
                     gp.playSoundEfect(1);
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.println("Key:"+hasKey);
+                    gp.ui.showMessage("Ai găsit o cheie!");
                     break;
                 case "Door":
                     gp.playSoundEfect(2);
                     if(hasKey > 0){
                         gp.obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("Ai deschis ușa!");
                     }
-                    System.out.println("Key:"+hasKey);
+                    else{
+                        gp.ui.showMessage("Ai nevoie de cheie pentru a deschide ușa!");
+                    }
                     break;
                 case "Mushroom":
                     gp.playSoundEfect(3);
                     speed +=2;
                     gp.obj[i] = null;
+                    gp.ui.showMessage("Ai prins viteză!");
+                    break;
+                case "Child":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    speed = 1;
+                    gp.playSoundEfect(4);
                     break;
             }
         }

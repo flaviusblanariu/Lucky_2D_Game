@@ -1,6 +1,6 @@
 package main;
 
-import object.Obj_Chest;
+import object.Obj_Child;
 import object.Obj_Door;
 import object.Obj_Key;
 import object.Obj_Mushroom;
@@ -25,22 +25,19 @@ public class AssetSet {
         gp.obj[2].worldY = 7 * gp.tileSize;
 
         gp.obj[3] = new Obj_Door();
-        gp.obj[3].worldX = 12 * gp.tileSize;
+        gp.obj[3].worldX = 10 * gp.tileSize;
         gp.obj[3].worldY = 11 * gp.tileSize;
 
         gp.obj[4] = new Obj_Door();
         gp.obj[4].worldX = 8 * gp.tileSize;
         gp.obj[4].worldY = 28 * gp.tileSize;
 
-        gp.obj[5] = new Obj_Door();
-        gp.obj[5].worldX = 12 * gp.tileSize;
-        gp.obj[5].worldY = 10 * gp.tileSize;
 
-        gp.obj[6] = new Obj_Chest();
+        gp.obj[6] = new Obj_Child();
         gp.obj[6].worldX = 10 * gp.tileSize;
         gp.obj[6].worldY = 7 * gp.tileSize;
 
-        gp.obj[7] = new Obj_Chest();
+        gp.obj[7] = new Obj_Child();
         gp.obj[7].worldX = 12 * gp.tileSize;
         gp.obj[7].worldY = 7 * gp.tileSize;
 
