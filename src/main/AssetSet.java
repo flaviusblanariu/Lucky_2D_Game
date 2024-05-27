@@ -17,8 +17,8 @@ public class AssetSet {
         gp.obj[0].worldY = 7 * gp.tileSize; //nr coloanei
 
         gp.obj[1] = new Obj_Key();
-        gp.obj[1].worldX = 24 * gp.tileSize;
-        gp.obj[1].worldY = 8 * gp.tileSize;
+        gp.obj[1].worldX = 21 * gp.tileSize;
+        gp.obj[1].worldY = 39 * gp.tileSize;
 
         gp.obj[2] = new Obj_Key();
         gp.obj[2].worldX = 37 * gp.tileSize;

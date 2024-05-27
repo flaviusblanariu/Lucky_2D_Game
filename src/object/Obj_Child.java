@@ -8,7 +8,7 @@ public class Obj_Child extends SuperObject{
 
             name = "Child";
             try{
-                image = ImageIO.read(getClass().getResourceAsStream("/objects/treasure.png"));
+                image = ImageIO.read(getClass().getResourceAsStream("/player/Ivy_girl_1.png"));
             }catch(IOException e){
                 e.printStackTrace();
             }
