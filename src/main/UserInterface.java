@@ -37,7 +37,7 @@ public class UserInterface {
         // Initialize text field and button
         nameField = new JTextField(15);
         nameField.setBounds(gp.tileSize * 5, gp.tileSize * 3, gp.tileSize * 8, gp.tileSize);
-        submitButton = new JButton("Salvează");
+        submitButton = new JButton("Save");
         submitButton.setBounds(gp.tileSize * 14, gp.tileSize * 3, gp.tileSize * 5, gp.tileSize);
 
         // Add components to UI panel
@@ -64,13 +64,13 @@ public class UserInterface {
             int x;
             int y;
 
-            text = "Ți-ai găsit fiica pierdută!";
+            text = "You found your lost daughter!";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
             y = gp.screenHeight / 2 - (gp.tileSize * 3);
             g2.drawString(text, x, y);
 
-            text = "Timpul total este de:" + decimalFormat.format(playTime) + " secunde!";
+            text = "Total time spent:" + decimalFormat.format(playTime) + " seconds!";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
             y = gp.screenHeight / 2 + (gp.tileSize * 4);
@@ -78,7 +78,7 @@ public class UserInterface {
 
             g2.setFont(impact_80B);
             g2.setColor(Color.green);
-            text = "Felicitări!";
+            text = "Congratulations!";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
             y = gp.screenHeight / 2 + (gp.tileSize * 2);
@@ -91,10 +91,10 @@ public class UserInterface {
             g2.setFont(impact_40);
             g2.setColor(Color.white);
             g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            g2.drawString("Chei = " + gp.player.hasKey, 100, 80);
+            g2.drawString("Keys = " + gp.player.hasKey, 100, 80);
 
             playTime += (double) 1 / 60;
-            g2.drawString("Timp scurs:" + decimalFormat.format(playTime) + " secunde", gp.tileSize * 9, 80);
+            g2.drawString("Time spent:" + decimalFormat.format(playTime) + " seconds", gp.tileSize * 9, 80);
 
             //Mesaj
 

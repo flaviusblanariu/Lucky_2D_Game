@@ -123,24 +123,24 @@ public class Player extends Entity{
                     gp.playSoundEfect(1);
                     hasKey++;
                     gp.obj[i] = null;
-                    gp.ui.showMessage("Ai găsit o cheie!");
+                    gp.ui.showMessage("You found a key!!");
                     break;
                 case "Door":
                     gp.playSoundEfect(2);
                     if(hasKey > 0){
                         gp.obj[i] = null;
                         hasKey--;
-                        gp.ui.showMessage("Ai deschis ușa!");
+                        gp.ui.showMessage("You opened the door!");
                     }
                     else{
-                        gp.ui.showMessage("Ai nevoie de cheie pentru a deschide ușa!");
+                        gp.ui.showMessage("You need a key to open this door!");
                     }
                     break;
                 case "Mushroom":
                     gp.playSoundEfect(3);
                     speed +=2;
                     gp.obj[i] = null;
-                    gp.ui.showMessage("Ai prins viteză!");
+                    gp.ui.showMessage("Speed up!");
                     break;
                 case "Child":
                     gp.ui.gameFinished = true;
